@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AgroFlow - Farmer Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-3">
+      <img src="logo.jpg" alt="AgroFlow Logo" class="w-10 h-auto rounded" />
+      <div>
+        <h1 class="text-xl font-bold text-green-800">AgroFlow</h1>
+        <p class="text-sm text-gray-600">Farmer Dashboard</p>
+      </div>
+    </div>
+    <div class="text-right">
+      <p class="font-semibold">Vuvuv6c</p>
+      <p class="text-sm text-gray-500">ID: 1</p>
+    </div>
+  </nav>
+
+  <!-- Main container -->
+  <main class="max-w-7xl mx-auto flex-grow px-6 py-8 space-y-8">
+    <a href="officer_dashboard.html" class="bg-green-700 hover:bg-green-900 px-4 py-2 rounded text-white font-semibold">Back to Dashboard</a>
+
+    <!-- Info Cards -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-green-800 font-bold text-lg mb-4">Farmer Information</h2>
+        <p><span class="font-semibold">Name:</span> Vuvuv6c</p>
+        <p><span class="font-semibold">Phone:</span> 01866328649</p>
+        <p><span class="font-semibold">Village:</span> Chuvycyg8jijibugy</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-green-800 font-bold text-lg mb-4">Land Information</h2>
+        <p><span class="font-semibold">Total Land:</span> 5.00 acres</p>
+        <p><span class="font-semibold">Land Type:</span> mixed</p>
+        <p><span class="font-semibold">Active Fields:</span> 0</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-green-800 font-bold text-lg mb-4">Current Season</h2>
+        <p><span class="font-semibold">Season:</span> Rabi 2024-25</p>
+        <p><span class="font-semibold">Active Crops:</span> 0</p>
+        <p><span class="font-semibold">Total Plans:</span> 0</p>
+      </div>
+    </section>
+
+    <!-- Horizontal Sections -->
+    <section class="grid grid-cols-1 md:grid-cols-4 gap-6 h-[400px]">
+      
+      <!-- Fields -->
+      <div class="bg-white rounded-lg shadow p-6 flex flex-col">
+        <h2 class="text-green-800 font-bold text-xl mb-4">📍 Fields</h2>
+        <div class="flex-1 flex justify-center items-center text-gray-500">
+          No fields added yet
+        </div>
+        <button onclick="openModal('fieldModal')" class="mt-4 bg-green-700 hover:bg-green-900 text-white px-5 py-2 rounded font-semibold flex items-center gap-2 self-center">
+          ➕ Add Field
+        </button>
+      </div>
+
+      <!-- Crop Plans -->
+      <div class="bg-white rounded-lg shadow p-6 flex flex-col">
+        <h2 class="text-green-800 font-bold text-xl mb-4">🌱 Crop Plans</h2>
+        <div class="flex-1 flex justify-center items-center text-gray-500">
+          No crop plans added yet.
+        </div>
+        <button onclick="openModal('planModal')" class="mt-4 bg-green-700 hover:bg-green-900 text-white px-5 py-2 rounded font-semibold flex items-center gap-2 self-center">
+          ➕ Add Plan
+        </button>
+      </div>
+
+      <!-- Harvests -->
+      <div class="bg-white rounded-lg shadow p-6 flex flex-col">
+        <h2 class="text-green-800 font-bold text-xl mb-4">📦 Harvests</h2>
+        <div class="flex-1 flex justify-center items-center text-gray-500">
+          No harvest data available.
+        </div>
+        <button onclick="openModal('harvestModal')" class="mt-4 bg-green-700 hover:bg-green-900 text-white px-5 py-2 rounded font-semibold flex items-center gap-2 self-center">
+          ➕ Add Harvest
+        </button>
+      </div>
+
+      <!-- Sales -->
+      <div class="bg-white rounded-lg shadow p-6 flex flex-col">
+        <h2 class="text-green-800 font-bold text-xl mb-4">📈 Sales</h2>
+        <div class="flex-1 flex justify-center items-center text-gray-500">
+          No sales data available.
+        </div>
+        <button onclick="openModal('saleModal')" class="mt-4 bg-green-700 hover:bg-green-900 text-white px-5 py-2 rounded font-semibold flex items-center gap-2 self-center">
+          ➕ Add Sale
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Modals -->
+  <div id="fieldModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="bg-white rounded-lg p-6 w-full max-w-lg">
+      <h3 class="text-xl font-bold mb-4">Add Field</h3>
+      <form class="space-y-3">
+        <input type="text" placeholder="Field ID" class="w-full border rounded p-2">
+        <input type="text" placeholder="Location" class="w-full border rounded p-2">
+        <input type="text" placeholder="Field Size" class="w-full border rounded p-2">
+        <input type="text" placeholder="Soil Type" class="w-full border rounded p-2">
+        <input type="text" placeholder="Irrigation Type" class="w-full border rounded p-2">
+        <input type="text" placeholder="Ownership Type" class="w-full border rounded p-2">
+        <div class="flex justify-end gap-3">
+          <button type="button" onclick="closeModal('fieldModal')" class="px-4 py-2 border rounded">Cancel</button>
+          <button class="px-4 py-2 bg-green-700 text-white rounded">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="planModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="bg-white rounded-lg p-6 w-full max-w-lg">
+      <h3 class="text-xl font-bold mb-4">Add Crop Plan</h3>
+      <form class="space-y-3">
+        <input type="text" placeholder="Plan ID" class="w-full border rounded p-2">
+        <input type="date" placeholder="Planting Date" class="w-full border rounded p-2">
+        <input type="date" placeholder="Expected Harvest Date" class="w-full border rounded p-2">
+        <input type="text" placeholder="Expected Yield" class="w-full border rounded p-2">
+        <input type="text" placeholder="Season" class="w-full border rounded p-2">
+        <div class="flex justify-end gap-3">
+          <button type="button" onclick="closeModal('planModal')" class="px-4 py-2 border rounded">Cancel</button>
+          <button class="px-4 py-2 bg-green-700 text-white rounded">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="harvestModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="bg-white rounded-lg p-6 w-full max-w-lg">
+      <h3 class="text-xl font-bold mb-4">Add Harvest</h3>
+      <form class="space-y-3">
+        <input type="text" placeholder="Harvest ID" class="w-full border rounded p-2">
+        <input type="date" placeholder="Harvest Date" class="w-full border rounded p-2">
+        <input type="text" placeholder="Quantity" class="w-full border rounded p-2">
+        <input type="text" placeholder="Quality Grade" class="w-full border rounded p-2">
+        <input type="text" placeholder="Storage Status" class="w-full border rounded p-2">
+        <input type="text" placeholder="Storage Location" class="w-full border rounded p-2">
+        <div class="flex justify-end gap-3">
+          <button type="button" onclick="closeModal('harvestModal')" class="px-4 py-2 border rounded">Cancel</button>
+          <button class="px-4 py-2 bg-green-700 text-white rounded">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="saleModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="bg-white rounded-lg p-6 w-full max-w-lg">
+      <h3 class="text-xl font-bold mb-4">Add Sale</h3>
+      <form class="space-y-3">
+        <input type="text" placeholder="Sale ID" class="w-full border rounded p-2">
+        <input type="text" placeholder="Final Quantity" class="w-full border rounded p-2">
+        <input type="text" placeholder="Final Price per KG" class="w-full border rounded p-2">
+        <input type="date" placeholder="Sale Date" class="w-full border rounded p-2">
+        <input type="text" placeholder="Payment Status" class="w-full border rounded p-2">
+        <input type="text" placeholder="Payment Mode" class="w-full border rounded p-2">
+        <input type="text" placeholder="Delivery Status" class="w-full border rounded p-2">
+        <div class="flex justify-end gap-3">
+          <button type="button" onclick="closeModal('saleModal')" class="px-4 py-2 border rounded">Cancel</button>
+          <button class="px-4 py-2 bg-green-700 text-white rounded">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JS for modal toggle -->
+  <script>
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+  </script>
+
+</body>
+</html>

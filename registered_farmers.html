@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AgroFlow - Registered Farmers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-green-800 text-white flex justify-between items-center px-8 py-4 shadow-md">
+    <div class="flex items-center space-x-4">
+      <img src="logo.jpg" alt="AgroFlow Logo" class="w-12 h-auto rounded" />
+      <div>
+        <h1 class="text-2xl font-bold">AgroFlow</h1>
+        <span class="text-sm opacity-80">Registered Farmers</span>
+      </div>
+    </div>
+    <a href="officer_dashboard.html" class="bg-green-700 hover:bg-green-900 px-4 py-2 rounded text-white font-semibold">Back to Dashboard</a>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow max-w-5xl mx-auto px-6 py-8 space-y-6">
+    <h2 class="text-xl font-bold text-gray-800">Registered Farmers</h2>
+    <div id="farmersList" class="bg-white shadow rounded-lg p-6 overflow-y-auto max-h-[600px]">
+      <!-- Farmer list will be injected here -->
+      <p class="text-gray-500 italic">Loading farmers...</p>
+    </div>
+  </main>
+
+<script>
+  const STORAGE_KEY = 'agroflow_farmers';
+  const farmersListEl = document.getElementById('farmersList');
+
+  // Load farmers or empty array
+  let farmers = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+  function renderFarmers() {
+    if (farmers.length === 0) {
+      farmersListEl.innerHTML = '<p class="text-gray-500 italic">No farmers registered yet.</p>';
+      return;
+    }
+
+    const ul = document.createElement('ul');
+    ul.className = 'divide-y divide-gray-200';
+
+    farmers.forEach(farmer => {
+      const li = document.createElement('li');
+      li.className = 'py-4 cursor-pointer hover:bg-green-50 rounded px-3';
+      li.textContent = `${farmer.name} (ID: ${farmer.farmer_id})`;
+      li.addEventListener('click', () => {
+        // Navigate to farmer dashboard page with farmer id
+        window.location.href = `farmer_dashboard.html?farmer_id=${encodeURIComponent(farmer.farmer_id)}`;
+      });
+      ul.appendChild(li);
+    });
+
+    farmersListEl.innerHTML = '';
+    farmersListEl.appendChild(ul);
+  }
+
+  renderFarmers();
+</script>
+
+</body>
+</html>
